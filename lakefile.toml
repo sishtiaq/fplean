@@ -1,0 +1,10 @@
+name = "FPLean"
+version = "0.1.0"
+defaultTargets = ["fplean"]
+
+[[lean_lib]]
+name = "FPLean"
+
+[[lean_exe]]
+name = "fplean"
+root = "Main"
