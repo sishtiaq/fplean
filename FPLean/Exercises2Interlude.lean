@@ -16,7 +16,7 @@ theorem sums : 2+3=5 ∧ 15-8=7 ∧ "hello".append " world" = "hello world" := b
   . rfl
 
 theorem fivelesseight : 5 < 8 := by
-  -- rlf
+  -- rfl -- because 5 not defn eq to 8
   simp
 
 theorem sums_again : 2+3=5 ∧ 15-8=7 ∧ "hello".append " world" = "hello world" := by
