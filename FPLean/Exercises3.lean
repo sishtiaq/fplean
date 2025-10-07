@@ -64,3 +64,5 @@ def efour : Even := Even.mk 2
 def etwo : Even := Even.mk 1
 
 #eval s!"2={etwo}, 4={efour}, 6={esix}: 2+4={etwo + efour}, 2*4={etwo * efour}"
+
+-- Exercise 3.1.6.3
