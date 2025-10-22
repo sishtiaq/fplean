@@ -66,3 +66,33 @@ def etwo : Even := Even.mk 1
 #eval s!"2={etwo}, 4={efour}, 6={esix}: 2+4={etwo + efour}, 2*4={etwo * efour}"
 
 -- Exercise 3.1.6.3
+
+
+
+
+-- Exercise 3.5.9
+
+-- HAppend for NonEmptyList
+structure NonEmptyList (α : Type) where
+  head : α
+  tail : List α
+deriving Repr
+def hAppend {α : Type} (l1 l2 : NonEmptyList α) : NonEmptyList α :=
+  NonEmptyList.mk l1.head (l1.tail ++ (l2.head :: l2.tail))
+instance : HAppend (NonEmptyList α) (NonEmptyList α) (NonEmptyList α) where
+  hAppend := hAppend
+
+-- Functor.map for BinTree
+inductive BinTree (α : Type) where
+  | leaf : BinTree α
+  | branch : BinTree α → α → BinTree α → BinTree α
+deriving Repr
+
+def map {α β : Type} (f : α → β) : BinTree α → BinTree β
+| BinTree.leaf => BinTree.leaf
+| BinTree.branch l x r => BinTree.branch (map f l) (f x) (map f r)
+
+instance : Functor BinTree where
+  map := map
+-- Directly defining the `map` inside the Functor instance runs into
+-- typing issues.
