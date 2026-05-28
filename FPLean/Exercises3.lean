@@ -66,8 +66,7 @@ def etwo : Even := Even.mk 1
 #eval s!"2={etwo}, 4={efour}, 6={esix}: 2+4={etwo + efour}, 2*4={etwo * efour}"
 
 -- Exercise 3.1.6.3
-
-
+-- TODO
 
 
 -- Exercise 3.5.9
@@ -96,3 +95,25 @@ instance : Functor BinTree where
   map := map
 -- Directly defining the `map` inside the Functor instance runs into
 -- typing issues.
+
+
+
+
+inductive A where
+  | a
+
+inductive B where
+  | b
+
+instance : Coe A B where
+  coe _ := B.b
+
+instance : Coe B A where
+  coe _ := A.a
+
+instance : Coe Unit A where
+  coe _ := A.a
+
+def coercedToB : B := ()
+
+#eval coercedToB
